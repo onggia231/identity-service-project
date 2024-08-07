@@ -60,7 +60,7 @@ public class AuthenticationService {
         boolean isValid = true;
 
         try {
-            verifyToken(token, false); // false: ko refresh token chi kiem tra token
+            verifyToken(token, false);
         } catch (AppException e) {
             isValid = false;
         }
@@ -99,11 +99,9 @@ public class AuthenticationService {
     }
 
     private SignedJWT verifyToken(String token, boolean isRefresh) throws ParseException, JOSEException {
-        JWSVerifier verifier =
-                new MACVerifier(SIGNER_KEY.getBytes());
+        JWSVerifier verifier = new MACVerifier(SIGNER_KEY.getBytes());
 
-        SignedJWT signedJWT = SignedJWT.parse(
-                token);
+        SignedJWT signedJWT = SignedJWT.parse(token);
         Date expityTime = (isRefresh)
                 ? new Date(signedJWT
                 .getJWTClaimsSet()

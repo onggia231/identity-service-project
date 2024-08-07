@@ -24,6 +24,6 @@ public class UserCreationRequest {
 
     @DobConstraint(
             min = 18,
-            message = "INVALID_DOB") // DobConstraint custom, INVALID_DOB duoc mo ta ma loi o class ErrorCode
+            message = "INVALID_DOB")
     LocalDate dob;
 }

@@ -24,14 +24,12 @@ public class CustomJwtDecoder implements JwtDecoder {
     @Autowired
     private AuthenticationService authenticationService;
 
-    private NimbusJwtDecoder nimbusJwtDecoder =
-            null;
+    private NimbusJwtDecoder nimbusJwtDecoder = null;
 
     @Override
     public Jwt decode(String token) throws JwtException {
 
         try {
-
             var response = authenticationService.introspect(
                     IntrospectRequest.builder().token(token).build());
 

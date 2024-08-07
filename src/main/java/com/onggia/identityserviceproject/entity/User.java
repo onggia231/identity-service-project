@@ -27,12 +27,12 @@ public class User {
     String lastName;
     LocalDate dob;
 
-    // @Column(name = "email", unique = true, columnDefinition = "VARCHAR(255) COLLATE utf8mb4_unicode_ci")
-    @Column(name = "email", unique = false, columnDefinition = "VARCHAR(255) COLLATE utf8mb4_unicode_ci") // thay unique = false de test ko bi loi Duplicate
-    String email;
-
-    @Column(name = "email_verified", nullable = false, columnDefinition = "boolean default false")
-    boolean emailVerified;
+//    // @Column(name = "email", unique = true, columnDefinition = "VARCHAR(255) COLLATE utf8mb4_unicode_ci")
+//    @Column(name = "email", unique = false, columnDefinition = "VARCHAR(255) COLLATE utf8mb4_unicode_ci") // thay unique = false de test ko bi loi Duplicate
+//    String email;
+//
+//    @Column(name = "email_verified", nullable = false, columnDefinition = "boolean default false")
+//    boolean emailVerified;
 
     @ManyToMany
     Set<Role> roles;

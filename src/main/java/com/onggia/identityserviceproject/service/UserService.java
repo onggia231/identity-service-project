@@ -1,6 +1,7 @@
 package com.onggia.identityserviceproject.service;
 
 import com.onggia.identityserviceproject.constant.PredefinedRole;
+import com.onggia.identityserviceproject.dto.request.PasswordCreationRequest;
 import com.onggia.identityserviceproject.dto.request.UserCreationRequest;
 import com.onggia.identityserviceproject.dto.request.UserUpdateRequest;
 import com.onggia.identityserviceproject.dto.response.UserResponse;
@@ -21,6 +22,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.HashSet;
 import java.util.List;
@@ -54,11 +56,28 @@ public class UserService {
         return userMapper.toUserResponse(user);
     }
 
+    public void createPassword(PasswordCreationRequest request) {
+        var context = SecurityContextHolder.getContext();
+        String name = context.getAuthentication().getName();
+
+        User user = userRepository.findByUsername(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+
+        if (StringUtils.hasText(user.getPassword())) {
+            throw new AppException(ErrorCode.USER_EXISTED);
+        }
+
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        userRepository.save(user);
+    }
+
     public UserResponse getMyInfo() {
         var context = SecurityContextHolder.getContext();
         String name = context.getAuthentication().getName();
 
         User user = userRepository.findByUsername(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
+
+        var userResponse = userMapper.toUserResponse(user);
+        userResponse.setNoPassword(!StringUtils.hasText(user.getPassword()));
 
         return userMapper.toUserResponse(user);
     }

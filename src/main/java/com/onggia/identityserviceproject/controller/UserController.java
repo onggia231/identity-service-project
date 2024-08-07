@@ -1,6 +1,7 @@
 package com.onggia.identityserviceproject.controller;
 
 import com.onggia.identityserviceproject.dto.request.ApiResponse;
+import com.onggia.identityserviceproject.dto.request.PasswordCreationRequest;
 import com.onggia.identityserviceproject.dto.request.UserCreationRequest;
 import com.onggia.identityserviceproject.dto.request.UserUpdateRequest;
 import com.onggia.identityserviceproject.dto.response.UserResponse;
@@ -27,6 +28,14 @@ public class UserController {
     ApiResponse<UserResponse> createUser(@RequestBody @Valid UserCreationRequest request) {
         return ApiResponse.<UserResponse>builder()
                 .result(userService.createUser(request))
+                .build();
+    }
+
+    @PostMapping("/create-password")
+    ApiResponse<Void> createPassword(@RequestBody @Valid PasswordCreationRequest request) {
+        userService.createPassword(request);
+        return ApiResponse.<Void>builder()
+                .message("Password has been created, you could use it to log-in")
                 .build();
     }
 

@@ -14,6 +14,12 @@ spring:
       ddl-auto: update
     show-sql: true
 
+outbound:
+  identity:
+    client-id: ${CLIENT_ID}
+    client-secret: ${CLIENT_SECRET}
+    redirect-uri: ${REDIRECT_URI}
+
 jwt:
   signerKey: "g34ksPeEIg4sjPQN1tjahdHggcxX5IVytU0X/f/BUbe8plgGq5YR/HWGA303Wg0h"
   valid-duration: 3600 # in second

@@ -79,7 +79,7 @@ public class UserService {
         var userResponse = userMapper.toUserResponse(user);
         userResponse.setNoPassword(!StringUtils.hasText(user.getPassword()));
 
-        return userMapper.toUserResponse(user);
+        return userResponse;
     }
 
     @PostAuthorize("returnObject.username == authentication.name")

@@ -1,9 +1,10 @@
 package com.onggia.identityserviceproject.mapper;
 
+import org.mapstruct.Mapper;
+
 import com.onggia.identityserviceproject.dto.request.PermissionRequest;
 import com.onggia.identityserviceproject.dto.response.PermissionResponse;
 import com.onggia.identityserviceproject.entity.Permission;
-import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface PermissionMapper {

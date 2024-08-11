@@ -11,7 +11,7 @@
     <groupId>com.devteria</groupId>
     <artifactId>identity-service</artifactId>
     <name>identity-service</name>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2</version>
     <description>Identity service</description>
     <properties>
         <java.version>17</java.version>

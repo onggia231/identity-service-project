@@ -1,10 +1,11 @@
 package com.onggia.identityserviceproject.mapper;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
 import com.onggia.identityserviceproject.dto.request.RoleRequest;
 import com.onggia.identityserviceproject.dto.response.RoleResponse;
 import com.onggia.identityserviceproject.entity.Role;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface RoleMapper {

@@ -1,18 +1,20 @@
 package com.onggia.identityserviceproject.service;
 
+import java.util.HashSet;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.onggia.identityserviceproject.dto.request.RoleRequest;
 import com.onggia.identityserviceproject.dto.response.RoleResponse;
 import com.onggia.identityserviceproject.mapper.RoleMapper;
 import com.onggia.identityserviceproject.repository.PermissionRepository;
 import com.onggia.identityserviceproject.repository.RoleRepository;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
-import java.util.HashSet;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor

@@ -1,16 +1,18 @@
 package com.onggia.identityserviceproject.controller;
 
+import java.text.ParseException;
+
+import org.springframework.web.bind.annotation.*;
+
+import com.nimbusds.jose.JOSEException;
 import com.onggia.identityserviceproject.dto.request.*;
 import com.onggia.identityserviceproject.dto.response.AuthenticationResponse;
 import com.onggia.identityserviceproject.dto.response.IntrospectResponse;
 import com.onggia.identityserviceproject.service.AuthenticationService;
-import com.nimbusds.jose.JOSEException;
+
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.web.bind.annotation.*;
-
-import java.text.ParseException;
 
 @RestController
 @RequestMapping("/auth")
@@ -20,9 +22,7 @@ public class AuthenticationController {
     AuthenticationService authenticationService;
 
     @PostMapping("/outbound/authentication")
-    ApiResponse<AuthenticationResponse> outboundAuthenticate(
-            @RequestParam("code") String code
-    ){
+    ApiResponse<AuthenticationResponse> outboundAuthenticate(@RequestParam("code") String code) {
         var result = authenticationService.outboundAuthenticate(code);
         return ApiResponse.<AuthenticationResponse>builder().result(result).build();
     }

@@ -1,11 +1,13 @@
 package com.onggia.identityserviceproject.dto.request;
 
-import com.onggia.identityserviceproject.validator.DobConstraint;
+import java.time.LocalDate;
+
 import jakarta.validation.constraints.Size;
+
+import com.onggia.identityserviceproject.validator.DobConstraint;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
@@ -22,8 +24,6 @@ public class UserCreationRequest {
     String firstName;
     String lastName;
 
-    @DobConstraint(
-            min = 18,
-            message = "INVALID_DOB")
+    @DobConstraint(min = 18, message = "INVALID_DOB")
     LocalDate dob;
 }
